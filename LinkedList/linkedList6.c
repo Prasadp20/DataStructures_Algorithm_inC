@@ -15,11 +15,20 @@ void addNewStudent()
 {
 	stud *newNode = (stud *)malloc(sizeof(stud));
 
-	printf("Enter student name : ");
-	fgets(newNode -> studName, 15, stdin);	
-
 	getchar();
+
+	printf("Enter student name : ");
+	//fgets(newNode -> studName, 15, stdin);
+	//gets(newNode -> studName);	
 	
+	int i = 0;
+	char ch;
+
+	while((ch = getchar()) != '\n')
+	{
+		(*newNode).studName[i++] = ch;
+	}
+
 	printf("Enter student roll number : ");
 	scanf("%d", &newNode -> rollNumber);
 
@@ -27,6 +36,7 @@ void addNewStudent()
 	scanf("%f", &newNode -> lastExamMarks);
 
 	newNode -> next = NULL;
+	printf("\n");
 
 	if(head == NULL)
 	{
@@ -49,20 +59,33 @@ void printStudentDetails()
 
 	while(temp != NULL)
 	{
-		printf("%d\n", temp -> rollNumber);
-		printf("%s\n", temp -> studName);
-		printf("%f\n", temp -> lastExamMarks);
+		printf("Roll number - %d\n", temp -> rollNumber);
+		printf("Student name - %s\n", temp -> studName);
+		printf("Last exam marks - %0.2f\n", temp -> lastExamMarks);
 
 		temp = temp -> next;
 	}
 	printf("\n");
 }
+void countOfStudents()
+{
+	int count = 0;
+	stud *temp = head;
+
+	while(temp != NULL)
+	{
+		temp = temp -> next;
+		count++;
+	}
+	printf("Total count of students : %d", count);
+	printf("\n");
+}
 void main()
 {
 	int choise;
-	while(choise != 3)
+	while(choise != 4)
 	{
-		printf("Enter 1 for Add new Student Details - \nEnter 2 for Show Students Details - \nEnter 3 for Exit - \n");
+		printf("Enter 1 for Add new Student Details - \nEnter 2 for Show Students Details - \nEnter 3 to See Total Count of Students - \nEnter 4 If You Want Left -\n");
 		scanf("%d", &choise);
 
 		switch(choise)
@@ -74,7 +97,10 @@ void main()
 				printStudentDetails();
 				break;
 			case 3:
-				choise = 3;
+				countOfStudents();
+				break;
+			case 4:
+				choise = 4;
 				break;
 		}
 	}
