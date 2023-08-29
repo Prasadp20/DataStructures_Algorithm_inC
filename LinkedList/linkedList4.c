@@ -12,18 +12,30 @@ struct student *head;
 void addNode()
 {
 	stud *newNode = (stud *)malloc(sizeof(stud));
+	
+	printf("Enter your Id = ");
+	scanf("%d", &newNode -> Id);
+	printf("Enter your percentage = ");
+	scanf("%f",&newNode -> percentage);
+	newNode -> next = NULL;
+	/*
 	newNode -> Id = 101;
 	newNode -> percentage = 85.12;
 	newNode -> next = NULL;
-
-	head = newNode;
-
-	newNode = (stud *)malloc(sizeof(stud));
-	newNode -> Id = 102;
-	newNode -> percentage = 87.12;
-	newNode -> next = NULL;
-	
-	head -> next = newNode;
+	*/
+	if(head == NULL)
+	{
+		head = newNode;
+	}
+	else
+	{
+		stud *temp = head;
+		while(temp -> next != NULL)
+		{
+			temp = temp -> next;
+		}
+		temp -> next = newNode;
+	}
 }
 
 void printLinkedList()
@@ -39,6 +51,9 @@ void printLinkedList()
 }
 void main()
 {
+	addNode();
+	addNode();
+	addNode();
 	addNode();
 	printLinkedList();
 }
