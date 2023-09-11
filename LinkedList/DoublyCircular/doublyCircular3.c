@@ -39,6 +39,7 @@ int countNode()
 	if(head == NULL){
 	
 		printf("List is Empty\n");
+		return -1;
 	}
 	else{
 		int count = 0;
@@ -229,7 +230,7 @@ void printLinkedList()
 		printf("| %d -> %s|", temp -> rollNumber, temp -> studName);
 		//printf("Roll Number of Student : %d\n", temp -> rollNumber);
 		//printf("Name of Student : %s\n", temp -> studName);
-		printf("\n");
+		//printf("\n");
 	}
 }
 
@@ -287,8 +288,12 @@ void main()
 				break;
 			case 8: 
 				{
-					int count = countNode();
-					printf("Total Count of Student Data is : %d\n", count);
+					int count = 0;
+					count = countNode();
+					if(count != -1){
+					
+						printf("Total Count of Student Data is : %d\n", count);
+					}
 				}
 				break;
 		}
