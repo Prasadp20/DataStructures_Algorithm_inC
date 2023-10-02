@@ -108,7 +108,7 @@ void main()
 			case 2:
 				{
 					int ret = Dequeue();
-					if(flag == 1){
+					if(flag == 1 && ret != -1){
 					
 						printf("%d is dequeue\n",ret);
 					} else{
