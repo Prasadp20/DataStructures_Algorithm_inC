@@ -140,6 +140,17 @@ int Pop()
     }
 }
 
+int printEle()
+{
+	demo* temp = head;
+	while(temp->next != NULL)
+	{
+		temp = temp->next;
+	}
+	int data = temp->data;
+	return data;
+}
+
 int Peek()
 {
     if(isEmpty())
@@ -149,15 +160,9 @@ int Peek()
     }
     else
     {
-        demo* temp = head;
-        while(temp->next != NULL)
-        {
-            temp = temp->next;
-        }
-
-        int data = temp->data;
+        int val = printEle();
         flag = 1;
-        return data;
+        return val;
     }
 }
 
