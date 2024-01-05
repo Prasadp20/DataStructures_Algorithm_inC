@@ -1,6 +1,6 @@
 #include<stdio.h>
 
-void SelectionSort(int arr[], int len)
+void SelectionSort(int arr[], int size)
 {
     for(int i = 0; i < size - 1; i++)
     {
@@ -24,18 +24,18 @@ void main()
 {
     int size = 0;
 
-    printf("Enter the size of array : ");
+    printf("Enter the array size : ");
     scanf("%d", &size);
 
     int arr[size];
 
-    printf("Enter the array elements : ");
+    printf("Enter array elements : ");
     for(int i = 0; i < size; i++)
     {
         scanf("%d", &arr[i]);
     }
-
-    printf("Array elements before sorting : ");
+    
+    printf("Array before sorting : ");
     for(int i = 0; i < size; i++)
     {
         printf("%d  ", arr[i]);
@@ -44,7 +44,7 @@ void main()
 
     SelectionSort(arr, size);
 
-    printf("Array elements after sorting : ");
+    printf("Array after sorting : ");
     for(int i = 0; i < size; i++)
     {
         printf("%d  ", arr[i]);

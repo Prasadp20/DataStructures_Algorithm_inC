@@ -83,7 +83,7 @@ void main()
 {
 	char choise;
 	printf("Enter Size of Array : ");
-	scanf("%d",&size);
+	sca~nf("%d",&size);
 
 	int arr[size];
 
