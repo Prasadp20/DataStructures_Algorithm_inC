@@ -1,14 +1,11 @@
 #include<stdio.h>
 
 int size = 0;
-#define size 1;
-int arr[size];
-
 int front = -1;
 int rear = -1;
 int flag = 0;
 
-int Enqueue()
+int Enqueue(int arr[])
 {
     if(rear == size - 1)
     {
@@ -29,12 +26,71 @@ int Enqueue()
     }
 }
 
+int Dequeue(int arr[])
+{
+    if(front == -1 || front > rear)
+    {
+        flag = 0;
+        return -1;
+    }
+    else
+    {
+        flag = 1;
+        int val = arr[front];
+        
+        if(front == rear)
+        {
+            front = -1;
+            rear = -1;
+        }
+        else
+        {
+            front++;
+        }
+
+        return val;
+    }
+}
+
+int Frontt(int arr[])
+{
+    if(front == -1)
+    {
+        flag = 0;
+        return -1;
+    }
+    else
+    {
+        flag = 1;
+        return arr[front];
+    }
+}
+
+int PrintQueue(int arr[])
+{
+    if(front == -1)
+    {
+        return -1;
+    }
+    else
+    {
+        for(int i = front; i <= rear; i++)
+        {
+            printf("%d  ", arr[i]);
+        }
+        printf("\n");
+        return 0;
+    }
+}
+
 void main()
 {
     char choise;
 
     printf("Enter the size of array : ");
     scanf("%d", &size);
+
+    int arr[size];
 
     do
     {
@@ -51,12 +107,54 @@ void main()
         {
             case 1:
             {
-                int ret = Enqueue();
+                int ret = Enqueue(arr);
                 if(ret == -1)
                 {
                     printf("Queue is overflow\n");
                 }
             }
+            break;
+
+            case 2:
+            {
+                int ret = Dequeue(arr);
+                if(flag == 1)
+                {
+                    printf("%d is dequeue\n", ret);
+                }
+                else
+                {
+                    printf("Queue is underflow\n");
+                }
+            }
+            break;
+
+            case 3:
+            {
+                int ret = Frontt(arr);
+                if(flag == 1)
+                {
+                    printf("%d \n", ret);
+                }
+                else
+                {
+                    printf("Queue is overflow\n");
+                }
+            }
+            break;
+
+            case 4:
+            {
+                int ret = PrintQueue(arr);
+                if(ret == -1)
+                {
+                    printf("Queue is underflow\n");
+                }
+            }
+            break;
+
+            default:
+                printf("Enter valid option\n");
             break;
         }
 
