@@ -71,7 +71,7 @@ void addNode()
     else
     {
         node* temp = head;
-        while(temp != NULL)
+        while(temp->next != NULL)
         {
             temp = temp->next;
         }
@@ -116,9 +116,33 @@ int deleteNode()
     return val;
 }
 
+int printEle()
+{
+    node* temp = head;
+    while(temp->next != NULL)
+    {
+        temp = temp->next;
+    }
+
+    int val = temp->number;
+    return val;
+}
+
+bool IsEmpty()
+{
+    if(eleCount() == 0)
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
+
 int Pop()
 {
-    if(isEmpty())
+    if(IsEmpty())
     {
         flag = 0;
         return -1;
@@ -130,7 +154,89 @@ int Pop()
         return val;
     }
 }
+
+int Peek()
+{
+    if(IsEmpty())
+    {
+        flag = 0;
+        return -1;
+    }
+    else
+    {
+        flag = 1;
+        int val = printEle();
+        return val;
+    }
+}
+
 void main()
 {
+    char choise;
+    printf("Enter the size of stack : ");
+    scanf("%d", &nodeCount);
 
+    do
+    {
+        printf("1. Push : \n");
+        printf("2. Pop : \n");
+        printf("3. Peek : \n");
+
+        int ch = 0;
+        printf("Enter your choise here : ");
+        scanf("%d", &ch);
+
+        switch(ch)
+        {
+            case 1:
+            {
+                int ret = Push();
+                if(ret == -1)
+                {
+                    printf("Stack is Overflow\n");
+                }
+            }
+            break;
+
+            case 2:
+            {
+                int ret = Pop();
+                if(flag == 0)
+                {
+                    printf("Stack is Underflow\n");
+                }
+                else
+                {
+                    printf("%d is popped\n", ret);
+                }
+            }
+            break;
+
+            case 3:
+            {
+                int ret = Peek();
+                if(flag == 0)
+                {
+                    printf("Stack is Underfow\n");
+                }
+                else
+                {
+                    printf("%d  \n", ret);
+                }
+            }
+            break;
+            
+            default:
+            {
+                printf("Enter valid option\n");
+            }
+            break;
+        }
+
+        getchar();
+        printf("Do you want to continue : ");
+        scanf("%c", &choise);
+
+    } while (choise == 'Y' || choise == 'y');
+    
 }
