@@ -65,6 +65,8 @@ anime* Dequeue()
         flag = 1;
         anime* val = front;
 
+        // add printf statement here 
+
         if(front->next == NULL)
         {
             free(front);
@@ -78,7 +80,7 @@ anime* Dequeue()
             free(temp);
         }
 
-        return val;
+        return val;     // its wrong 
     }
 }
 
